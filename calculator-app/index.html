@@ -1,0 +1,44 @@
+<html ng-app="caculator"> 
+    <head>
+        <title>Calculator Examples App</title>
+        <script src="angular.js"></script>
+        <script src="app.js"></script>
+    </head>
+    
+    <body> 
+        <h1>Calculator App</h1>
+        <!-- Two implementations -->
+<!--         <div ng-controller="CalculatorCtrl as ctrl">
+            <p>
+                <input type="text" ng-model="ctrl.num1"></input>
+                <span>{{ctrl.operator}}</span>
+                <input type="text" ng-model="ctrl.num2"></input> 
+                <button ng-click="ctrl.computeResult()">=</button>
+                <span>{{ctrl.result}}</span>
+            </p>
+            <p>
+                Choose operation: 
+                <button ng-click="ctrl.buttonClick('+')">+</button>
+                <button ng-click="ctrl.buttonClick('-')">-</button>
+                <button ng-click="ctrl.buttonClick('*')">*</button>
+                <button ng-click="ctrl.buttonClick('/')">/</button>
+            </p>
+        </div> -->
+        <div ng-controller="CalculatorCtrl as ctrl">
+            <p>
+                <input type="text" ng-model="ctrl.num1"></input>
+                <span>{{ctrl.operator}}</span>
+                <input type="text" ng-model="ctrl.num2"></input> 
+                <button>=</button>
+                <span>{{ctrl.result}}</span>
+            </p>
+            <p>
+                Choose operation: 
+                <button ng-click="ctrl.caculate('+')">+</button>
+                <button ng-click="ctrl.caculate('-')">-</button>
+                <button ng-click="ctrl.caculate('*')">*</button>
+                <button ng-click="ctrl.caculate('/')">/</button>
+            </p>
+        </div>
+    </body>
+</html>

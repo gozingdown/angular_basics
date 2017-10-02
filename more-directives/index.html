@@ -1,0 +1,28 @@
+<html ng-app="moreDirectivesApp"> 
+    <head>
+        <title>More Directives App</title>
+        <script src="angular.js"></script>
+        <script src="app.js"></script>
+    </head>
+    
+    <body> 
+        <h1>More Directives App</h1>
+        <div ng-controller="MoreDirectivesCtrl as ctrl">
+            <input type="checkbox" ng-model="ctrl.checked"></input>
+            <!-- <p ng-if="ctrl.checked">Some content</p> --> <!-- Angular removes the element from the DOM when false -->
+            <p ng-show="ctrl.checked">Some content</p> <!-- Angular only hide it using CSS when false -->
+
+            <p ng-show="!ctrl.checked">Some other content</p>
+            <p ng-hide="ctrl.checked">Some other content</p>
+
+            <div ng-repeat="obj in ctrl.myList"> <!-- Angular creates a new scope for each iteration, because ng-repeat loop creates multiple copies of HTML elements that all need to exist concurrently, at the same time. -->
+                <p>Element: {{$index + 1}}</p>
+                <p>First: {{$first}}</p>
+                <p>Name: {{obj.name}}</p>
+                <p>Age: {{obj.age}}</p>
+                <hr/>
+            </div>
+
+        </div>
+    </body>
+</html>

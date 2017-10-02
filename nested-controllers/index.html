@@ -1,0 +1,28 @@
+<html ng-app="nestedControllers"> 
+    <head>
+        <title>ngModel Examples App</title>
+        <script src="angular.js"></script>
+        <script src="app.js"></script>
+    </head>
+    
+    <body> 
+        <!-- When you have don't have any controllers, there is a default global $scope variable (called the "root scope") -->
+
+        <h1>Nested Controllers App</h1>
+
+        <!-- when you have nested controllers, you will have nested scopes -->
+        <!-- And it's not recommended -->
+        <!-- When you actually use it, use alias for controllers-->
+        <div ng-controller="Ctrl1 as c1"> <!-- alias -->
+            <p>{{c1.testProp}}</p>
+             <div ng-controller="Ctrl2 as c2"><!--  if Angular cannot find testProp in the inner scope object, it will look up to its parent. --> <!-- but it will not if you are using alias -->
+                <p>{{c2.testProp}}</p>
+            </div>
+        </div>
+
+<!--    <div ng-controller="Ctrl2">
+            <p>{{testProp}}</p>
+        </div> -->
+
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<html ng-app="todoApp"> 
+    <head>
+        <title>Todo App</title>
+        <script src="angular.js"></script>
+        <script src="app.js"></script>
+    </head>
+    
+    <body> 
+        <h1>Todo App</h1>
+        <div ng-controller="TodoCtrl as ctrl">
+            <div>
+                <p>Add a Todo:</p>
+                <p><input type="text" ng-model="ctrl.todoItem"></input></p>
+                <button ng-click="ctrl.addTodoItem()">Add</button>
+            </div>
+
+            <div>
+                <p>Your Todos:</p>
+                <button ng-hide="ctrl.isEdit" ng-click="ctrl.edit()">Edit</button>
+                <button ng-show="ctrl.isEdit" ng-click="ctrl.doneEdit()">Done</button>
+
+                <div>
+                    <div ng-repeat="todo in ctrl.todos track by $index"> <!-- instruct angular to use index to tell duplicate instead of content-->
+                        <span>{{$index+1}}. </span>
+                        <span ng-hide="ctrl.isEdit">{{todo}}</span>
+                        <button ng-hide="ctrl.isEdit" ng-click="ctrl.delete($index)">Delete</button>
+                        <input ng-show="ctrl.isEdit" ng-model="todo" type="text"></input>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </body>
+</html>
