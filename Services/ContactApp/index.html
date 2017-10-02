@@ -19,37 +19,54 @@
 
         <div ng-controller="ContactCtrl as ctrl">
             <div class="row">
-                <ul class="list-group">
-                    <li class="list-group-item" ng-repeat="contact in ctrl.contacts" ng-click="ctrl.selectContact($index)">
-                        <span>{{ contact.name.first + " " + contact.name.last }}</span>
-                    </li>
-                </ul>
-            </div>
+                <div class="col-md-6">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="contact in ctrl.contacts" ng-click="ctrl.selectContact($index)">
+                            <span>{{ contact.name.first + " " + contact.name.last }}</span>
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="row">
-                <div class="media">
-                    <div class="media-left">
-                        <a href="#">
-                            <img ng-src="{{ctrl.selectedContact.picture.medium}}"></img>
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">{{ ctrl.selectedContact.name.first + " " + ctrl.selectedContact.name.last }}</h4>
-                        <div>
-                            <p>
-                                <h6>Location</h6>
-                            </p>
-                            <p>
-                                {{ ctrl.selectedContact.location.street + " " + ctrl.selectedContact.location.city + " " + ctrl.selectedContact.location.state }}
-                            </p>
+                <div class="col-md-6">
+                    <div class="alert alert-success" ng-if="ctrl.successMessage">{{ctrl.successMessage}}</div>
+                    <div class="alert alert-danger" ng-if="ctrl.errorMessage">{{ctrl.errorMessage}}</div>
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img ng-src="{{ctrl.selectedContact.picture.medium}}"></img>
+                            </a>
                         </div>
-                        <div>
-                            <p>
-                                <h6>Phone</h6>
-                            </p>
-                            <p>
-                                {{ ctrl.selectedContact.cell }}
-                            </p>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ ctrl.selectedContact.name.first + " " + ctrl.selectedContact.name.last }}</h4>
+                            <button ng-hide="ctrl.isEdit" ng-click="ctrl.toggleEditMode()">Edit</button>
+                            <button ng-show="ctrl.isEdit" ng-click="ctrl.saveUser()">Save</button>
+                            <div>
+                                <p>
+                                    <h6>Location</h6>
+                                </p>
+                                <p>
+                                    <span>Street:</span>
+                                    <span ng-hide="ctrl.isEdit">{{ctrl.selectedContact.location.street}}</span>
+                                    <input type="text" ng-show="ctrl.isEdit" ng-model="ctrl.selectedContact.location.street"></input>
+                                </p>
+                                <p>
+                                    <span>City:</span>
+                                    <span ng-hide="ctrl.isEdit">{{ctrl.selectedContact.location.city}}</span>
+                                    <input type="text" ng-show="ctrl.isEdit" ng-model="ctrl.selectedContact.location.city"></input>
+                                </p>
+                                <p>
+                                    <span>State:</span>
+                                    <span ng-hide="ctrl.isEdit">{{ctrl.selectedContact.location.state}}</span>
+                                    <input type="text" ng-show="ctrl.isEdit" ng-model="ctrl.selectedContact.location.state"></input>
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <span>Phone:</span>
+                                    <span ng-hide="ctrl.isEdit">{{ ctrl.selectedContact.cell }}</span>
+                                    <input type="text" ng-show="ctrl.isEdit" ng-model="ctrl.selectedContact.cell"></input>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
